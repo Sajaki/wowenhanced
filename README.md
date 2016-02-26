@@ -102,9 +102,11 @@ TO TEST YOUR DONATION SYSTEM
 
 1. open "donate.php" in your root directory
 2. switch the comments out on these lines (24 - 27):
-`// If testing on Sandbox use:
+```
+// If testing on Sandbox use:
 //$fp = fsockopen ('ssl://www.sandbox.paypal.com', 443, $errno, $errstr, 30);
-$fp = fsockopen ('ssl://www.paypal.com', 443, $errno, $errstr, 30);`
+$fp = fsockopen ('ssl://www.paypal.com', 443, $errno, $errstr, 30);
+```
 
 3. go to `https://developer.paypal.com/us/cgi-bin/` and create a sandbox account.
 4. go -> login -> click on link "Create a preconfigured buyer or seller account." -> Edit the details to your liking.
@@ -167,18 +169,21 @@ In this release of MangosWeb, I have included a pre-installed/setup PBWoW Forum,
 
 1. Enable it in your config. look for this:
 
-`<!-- If you want to use external forums ( example Phpbb , you must configure these values) -->
+```
+<!-- If you want to use external forums ( example Phpbb , you must configure these values) -->
 <externalforum>0</externalforum>
 <frame_forum>0</frame_forum>
-<forum_external_link>LINK HERE</forum_external_link>`
+<forum_external_link>LINK HERE</forum_external_link>
+```
 
 And set it like this:
 
-`<!-- If you want to use external forums ( example Phpbb , you must configure these values) -->
+```
+<!-- If you want to use external forums ( example Phpbb , you must configure these values) -->
 <externalforum>1</externalforum>
 <frame_forum>0</frame_forum>
-<forum_external_link>forum/</forum_external_link>`
-
+<forum_external_link>forum/</forum_external_link>
+```
 2. Next you need to either create a new database, or just run it on your realmd, its up to you. Run the `./install/sql/extra_install/pbwow_forums.sql` on a database. There is another sql called. `pbwow_forums_blizzlike_setup.sql`. If you run that, all the forum catagories and sub catagories are setup very blizzlike.
 
 3. The final step is editing the config file. go `./forum/config.php` and edit the db username, db password, and db name.
@@ -219,25 +224,29 @@ Open your config.xml and go -> vote_system -> sleep_timer -> and change the 1 to
 
 '''Solution 1: regenerate your dynamic site configuration''' Blank out the following in config/config.xml:
 
-`<!-- Dynamic done by site. Dont touch this. -->
+```
+<!-- Dynamic done by site. Dont touch this. -->
 <temp>
 <site_href>/</site_href>
 <site_domain>www.mydomain.com</site_domain>
 <email_href>www.mydomain.com</email_href>
 <base_href>http://www.mydomain.com/</base_href>
 <template_href>/templates/offlike/</template_href>
-</temp>`
+</temp>
+```
 
 to look like this:
 
-`<!-- Dynamic done by site. Dont touch this. -->
+```
+<!-- Dynamic done by site. Dont touch this. -->
 <temp>
 <site_href></site_href>
 <site_domain></site_domain>
 <email_href></email_href>
 <base_href></base_href>
 <template_href></template_href>
-</temp>`
+</temp>
+```
 
 Then browse to the site, so MangosWeb automatically fills these settings in config.xml. After doing this, your login problems may be solved. If not, proceed to the next solution:
 
@@ -335,21 +344,24 @@ open /templates/offlike/body_right.php with your favorite editor
 
 Add links following this example:
 
+```
 <li class="e">
 <a href="<?php echo mw_url('account', 'register'); ?>"><?php echo $lang['quicklink1']; ?></a>
 </li>
 <li>
 <a href="<?php echo mw_url('server', 'realmstatus'); ?>"><?php echo $lang['quicklink3']; ?></a>
 </li>
-
+```
 So your would look like this:
 
+```
 li class="e">
 <a href="www.myspace.come/yourmyspacepage" /> <?php echo $lang['myspace']; ?></a>
 </li>
 <li>
 <a href="" /></a>
 </li>
+```
 
 ### 3. Question: How do i use the site with multiple realms?
 
