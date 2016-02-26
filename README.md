@@ -2,13 +2,13 @@ Welcome to MangosWeb Enhanced v2. This is a Front end/CMS project for Mangos and
 Credits go to Shasha, Nafe, TGM, Peec and Jimmy06 as they are the Original creaters of mangosweb. 
 This is just my version of MangosWeb which is more Uptodate, and has alot more features, and fixes then the old site.
 
-## Warning
+# Warning
 
 This version commit and modify your realmd database... I'll try to modify this in the future...
 
-## 1.1 Full Install 
+# 1.1 Full Install 
 
-### 1.1b Requirements
+## 1.1a Requirements
 
 * Apache with Mysql & PhP support
 	* Apache v2.2/2.4
@@ -16,7 +16,7 @@ This version commit and modify your realmd database... I'll try to modify this i
 	* Php version 5.x
 	* GD compiled into Php (In windows, enable GD exetension in php.ini file).
 
-### 1.1c Installing The Site
+## 1.1b Installing The Site
 
 1. **MAKE SURE** to backup your realmd database before updating or installing!
 2. Make sure all files are in the same folder under you "htdocs" or "www" folder
@@ -31,7 +31,7 @@ This version commit and modify your realmd database... I'll try to modify this i
 11. Now its time to configure the Mainsite, open "config/config.xml" MAKE SURE you spend a good amount of time editing the site!
 12. To configure the player map, open "config/playermap_config.php"
 
-### 1.1d How To Update
+## 1.1c How To Update
 
 1. **MAKE SURE** to backup your realmd database before updating!
 2. Navigate to your MangoWeb Enhanced directory.
@@ -42,46 +42,51 @@ This version commit and modify your realmd database... I'll try to modify this i
 
 If you are upgrading from version 1 to version 2 of MangosWeb Enhanced, You need to open "/install/sql/updates/old_v1_updates/" and bring your MangosWeb database up to revision 56. Once that is done, run the "/install/sql/updates/upgrade_from_v1.sql" on your realmd database.
 
+# 2. Configurations
+
 ## 2.1 Setting Up The News via News Module
 
 The news forum IS SETUP ALREADY set up. To edit any anything, go: "admin panel -> add/edit news"
 
 If you leave Default Component to frontpage, topics you post here will appear on the main page. Very Blizzlike.
 
-
 ## 2.2 Setting Up The Vote System 
 
-1.1 Your server remote access should be turned on (look in your server config file for Ra.Enable).
+* Your server remote access should be turned on (look in your server config file for Ra.Enable).
 
-1.1b If you prefer (most do), you can use SOAP as of patch 3.3.5a. Its setup just like Telnet. Make sure its turned on (look in your server config file for SOAP.Enable). If you choose to have SOAP enabled, you need RA.enabled as well.
+*If you prefer (most do), you can use SOAP as of patch 3.3.5a. Its setup just like Telnet. Make sure its turned on (look in your server config file for SOAP.Enable). If you choose to have SOAP enabled, you need RA.enabled as well.*
 
-1.2 Your telnet connection to the server remote must be working properly.
+* Your telnet connection to the server remote must be working properly.
 
 [Important] For the remote access user and pass you can use an existing Trinity/Mangos ACCOUNT or to CREATE a new one, BUT...
 
-1.2b. Its best if you create an account via your server console. Out of experiance, ive noticed that accounts created via the server console, have caused users the least amount of grief.
+* Its best if you create an account via your server console. Out of experience, I've noticed that accounts created via the server console, have caused users the least amount of grief.
 
-1.3 For every realm, you must enter the RA/SOAP information to the database. You can either do this manually by going ->realmd-> realmlist->('ra_port', 'ra_user', and 'ra_pass'). Or you can do this the easy way by going ->yousite.com->admin panel->realms-> (click your realm name)-> enter your RA info in the fields -> click "update". MAKE SURE you copy the username just how it is in the database. It should be all CAPS. [NOTE] If using SOAP, make sure the port is the Soap port NOT the RA port.
+* For every realm, you must enter the RA/SOAP information to the database. 
+	* You can either do this manually by going ->realmd-> realmlist->('ra_port', 'ra_user', and 'ra_pass'). 
+	* Or you can do this the easy way by going ->yousite.com->admin panel->realms-> (click your realm name)-> enter your RA info in the fields -> click "update". 
+
+MAKE SURE you copy the username just how it is in the database. It should be all CAPS. 
+[NOTE] If using SOAP, make sure the port is the Soap port NOT the RA port.
 
 [NOTE] know that its GM level (The ra account) must be set according to (not lower than) Ra.MinLevel in the server config file and this user must have "send money" and "send items" commands active. If you have any problems, check the ra.commands.log file that your sever creates "C:\YOUR SERVER ROOT\mangos\ra.commands.log"
 
-1.4 Ive also noticed through experiance that if you leave the RA.ip at 0.0.0.0, you will have less issues. (in your server config)
+* Ive also noticed through experiance that if you leave the RA.ip at 0.0.0.0, you will have less issues. (in your server config)
 
-2. If using trinity, open your "account_access" table in realmd database. Set realm ID for your telnet account to "-1"
+* If using trinity, open your "account_access" table in realmd database. Set realm ID for your telnet account to "-1"
 
-3. To adjust the rewards or site links etc. "go -> admin panel -> Vote system Admin"
+* To adjust the rewards or site links etc. "go -> admin panel -> Vote system Admin"
 
 ### NOTE! 
 
-The vote system is disabled through the config. look for <vote><enable>1</enable></vote>.
+The vote system is disabled through the config. look for `<vote><enable>1</enable></vote>`.
 To remove the "click here to vote for us" logo on the frontpage, open "config/config.xml" Find <votebanner><enable>
 
 If you are still having issues with the vote system after reading this, please read "Remote Access" under support, on this page.
 
-
 ## 2.3 Setting Up The Donation System 
 
-The donation system now uses Remote Access (New feature for MWE v2) to send items and.. Thats right, Gold because of the changes to the mail and mail_items tables, as well as thhe removal of the characters data fields. To learn how to set up your remote access, read section 2.2 (Setting up the vote system), or Section 3.1 (Remote Access).
+The donation system now uses Remote Access (New feature for MWE v2) to send items and Gold because of the changes to the mail and mail_items tables, as well as thhe removal of the characters data fields. To learn how to set up your remote access, read section 2.2 (Setting up the vote system), or Section 3.1 (Remote Access).
 
 1. Create a premier paypal account. (It's free)
 2. From the PayPal menu, go to Profile > Under selling Preferences > Instant Payment Notification Preferences.
@@ -97,18 +102,17 @@ TO TEST YOUR DONATION SYSTEM
 
 1. open "donate.php" in your root directory
 2. switch the comments out on these lines (24 - 27):
-// If testing on Sandbox use:
+`// If testing on Sandbox use:
 //$fp = fsockopen ('ssl://www.sandbox.paypal.com', 443, $errno, $errstr, 30);
-$fp = fsockopen ('ssl://www.paypal.com', 443, $errno, $errstr, 30);
+$fp = fsockopen ('ssl://www.paypal.com', 443, $errno, $errstr, 30);`
 
-3. go to https://developer.paypal.com/us/cgi-bin/ and create a sandbox account.
+3. go to `https://developer.paypal.com/us/cgi-bin/` and create a sandbox account.
 4. go -> login -> click on link "Create a preconfigured buyer or seller account." -> Edit the details to your liking.
 5. next go -> test tools -> Instant Payment Notification (IPN) Simulator. -> ... For the IPN handler url, enter the full url to your "donate.php". For payment type, select "eCheck complete" and "payment type "instant".
 
 ... Make sure under the "custom" field, you enter a characters guid number, that you can use to test and see if it fully works. Also, for testing purposes, under "item number", enter one on your donation packages, like "1" for example.
 
 6. You should see the information posted in the database, and you should be able to log in with the account that owns the character ID you used, and click "send items to ingame mailbox" on the donate page. log in and check your mailbox :)
-
 
 ## 2.4 Character Copy System
 
@@ -124,9 +128,7 @@ To set this feature up:
 5. Now go to your site, login, and click "copy character" under account.
 6. You should see the level 80 character you created, along with any other characters on that account, listed.
 
-
 to copy a character to your personal account, click the "copy character" button. The character will be copied to your account, along with whats in his/her bags, and the armor that character is wearing. The realm is decided by which realm you currently have selected.
-
 
 ## 2.5 Advanced Template System
 
@@ -159,39 +161,34 @@ Things to keep in mind when writing your code.
 3. to call your current template: <?php echo $currtmp; ?>
 4. to call your template file's template <?php echo $offtmp; ?>
 
-
 ## 2.6 Using PBWoW Forum (extra) 
 
 In this release of MangosWeb, I have included a pre-installed/setup PBWoW Forum, using PBWoW RC4, and phpbb v3.0.7pl1. What is PBWoW you ask? PBWoW is a phpbb mod, that makes your forum look like a blizzlike forums. In order to use these forums, theres only 3 steps.
 
 1. Enable it in your config. look for this:
 
-<!-- If you want to use external forums ( example Phpbb , you must configure these values) -->
+`<!-- If you want to use external forums ( example Phpbb , you must configure these values) -->
 <externalforum>0</externalforum>
 <frame_forum>0</frame_forum>
-<forum_external_link>LINK HERE</forum_external_link>
+<forum_external_link>LINK HERE</forum_external_link>`
 
 And set it like this:
 
-<!-- If you want to use external forums ( example Phpbb , you must configure these values) -->
+`<!-- If you want to use external forums ( example Phpbb , you must configure these values) -->
 <externalforum>1</externalforum>
 <frame_forum>0</frame_forum>
-<forum_external_link>forum/</forum_external_link>
+<forum_external_link>forum/</forum_external_link>`
 
-2. Next you need to either create a new database, or just run it on your realmd, its up to you. Run the "./install/sql/extra_install/pbwow_forums.sql" on a database. There is another sql called. pbwow_forums_blizzlike_setup.sql. If you run that, all the forum catagories and sub catagories are setup very blizzlike.
+2. Next you need to either create a new database, or just run it on your realmd, its up to you. Run the `./install/sql/extra_install/pbwow_forums.sql` on a database. There is another sql called. `pbwow_forums_blizzlike_setup.sql`. If you run that, all the forum catagories and sub catagories are setup very blizzlike.
 
-3. The final step is editing the config file. go "./forum/config.php" and edit the db username, db password, and db name.
+3. The final step is editing the config file. go `./forum/config.php` and edit the db username, db password, and db name.
 
-*The admin info to the forums is Username: admin Password: admin1. you should change the password ASAP.
-
-** I have also included the PBWoW readme. its located at "./install/pbwow/PBWoW RC4 readme.pdf". Make sure to read that before asking for help.
+* The admin info to the forums is Username: admin Password: admin1. you should change the password ASAP.
+* I have also included the PBWoW readme. its located at `./install/pbwow/PBWoW RC4 readme.pdf`. Make sure to read that before asking for help.
 
 [NOTE] The login info for pbwow is not integrated into MWEv2, so your users will need to create another account via the forums to use the forums.
 
-
-Support
-
-
+# 3. Support
 
 ## 3.1 Remote Access
 
@@ -216,32 +213,31 @@ D. Telnet connection problem: (no error)
 
 Open your config.xml and go -> vote_system -> sleep_timer -> and change the 1 to a 2 or 3. The sleep timer is the amount of seconds the script will sleep (halt the script) after ever command sent to the RA. there are 3 commands, 1 -> time to wait after sending username 2 -> time to wait sending the command after loggin in and 3 -> Checking to see if the command was executed properly. So for ever interval you increase the sleep timer, it will slow the RA down by 3 seconds.
 
-2. When all else fails, check you ra_commands.log from your server directory. It will always say what the error was. If you are still having issues, then post them here: http://code.google.com/p/mwenhanced/issues/list
+2. When all else fails, check you ra_commands.log from your server directory. It will always say what the error was. If you are still having issues, then post them here: https://github.com/saintfrater/wowenhanced/issues
 
 ## 3.2 Login Problems
 
 '''Solution 1: regenerate your dynamic site configuration''' Blank out the following in config/config.xml:
 
-
-<!-- Dynamic done by site. Dont touch this. -->
+`<!-- Dynamic done by site. Dont touch this. -->
 <temp>
 <site_href>/</site_href>
 <site_domain>www.mydomain.com</site_domain>
 <email_href>www.mydomain.com</email_href>
 <base_href>http://www.mydomain.com/</base_href>
 <template_href>/templates/offlike/</template_href>
-</temp>
+</temp>`
 
 to look like this:
 
-<!-- Dynamic done by site. Dont touch this. -->
+`<!-- Dynamic done by site. Dont touch this. -->
 <temp>
 <site_href></site_href>
 <site_domain></site_domain>
 <email_href></email_href>
 <base_href></base_href>
 <template_href></template_href>
-</temp>
+</temp>`
 
 Then browse to the site, so MangosWeb automatically fills these settings in config.xml. After doing this, your login problems may be solved. If not, proceed to the next solution:
 
