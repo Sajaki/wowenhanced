@@ -1,58 +1,55 @@
-Welcome to MangosWeb Enhanced v2. This is a Front end/CMS project for Mangos and Trinity. This project is a continuation of MangosWeb. Credits go to Shasha, Nafe, TGM, Peec and Jimmy06 as they are the Original creaters of mangosweb. This is just my version of MangosWeb which is more Uptodate, and has alot more features, and fixes then the old site.
+Welcome to MangosWeb Enhanced v2. This is a Front end/CMS project for Mangos and Trinity. This project is a continuation of MangosWeb. 
+Credits go to Shasha, Nafe, TGM, Peec and Jimmy06 as they are the Original creaters of mangosweb. 
+This is just my version of MangosWeb which is more Uptodate, and has alot more features, and fixes then the old site.
 
--- 1.1 Full Install --
+## Warning
 
-1.1b Requirements
+This version commit and modify your realmd database... I'll try to modify this in the future...
 
-Apache with Mysql & PhP support
-- Apache v2.2.x
-- MySQL 5.0.x
-- Php version 5.x
-- GD compiled into Php (In windows, enable GD exetension in php.ini file).
+## 1.1 Full Install 
 
+### 1.1b Requirements
 
-1.1c How To Update
+* Apache with Mysql & PhP support
+	* Apache v2.2/2.4
+	* MySQL 5.0.x or higher
+	* Php version 5.x
+	* GD compiled into Php (In windows, enable GD exetension in php.ini file).
 
-1. Right click on your MangosWeb Enhanced folder and select "synchronize". -MAKE SURE to backup your realmd database before updating!
-2. When the window pops up, select "Update" on the right, and select "post pull" (on the right)
-3. Click "pull" at the top of the window.
-4. Check the "/install/sql/updates/" for any new .sql files that need to be installed in your database.
+### 1.1c Installing The Site
 
+1. **MAKE SURE** to backup your realmd database before updating or installing!
+2. Make sure all files are in the same folder under you "htdocs" or "www" folder
+3. Go -> "./config/" and remove the ".dist" at the end of all the config files. For ex. config.xml.dist, should look like this -> config.xml
+4. If you want to use the online chat, Remove the ".dist" from the chat config file ("./components/chat/lib/config.php.dist").
+5. Go -> "./install/" and rename the `DISABLE_INSTALLER.php`to anything you want.
+6. Open your browser and imput your url to your MangosWeb installer (www.yoursite.com/(path_to_your_MangosWeb)/install/)
+7. Imput all the requested information like your Emulator, Realm, Character, and World database.
+8. Once at step 2, click on "full install sql injection".
+9. Once you hit step 3, you need to make a super Admin account. Once completed, your mainsite is installed!
+10. Now, go back and rename your old `DISABLE_INSTALLER.php` back to `DISABLE_INSTALLER.php`. This prevents people from hacking into your website.
+11. Now its time to configure the Mainsite, open "config/config.xml" MAKE SURE you spend a good amount of time editing the site!
+12. To configure the player map, open "config/playermap_config.php"
 
+### 1.1d How To Update
 
+1. **MAKE SURE** to backup your realmd database before updating!
+2. Navigate to your MangoWeb Enhanced directory.
+3. type `git pull`
+4. Check the `/install/sql/updates/` for any new .sql files that need to be installed in your database.
 
-1.1d Installing The Site
-
-1. Make sure all files are in the same folder under you "htdocs" or "www" folder
-2. Go -> ".root folder./config/" and remove the ".dist" at the end of all the config files. For ex. config.xml.dist, should look like this -> config.xml
-3. If you want to use the online chat, Remove the ".dist" from the chat config file ("./components/chat/lib/config.php.dist").
-4. Go -> ".root foler./install/" and rename the "DISABLE_INSTALLER.php to anything you want.
-5. Open your browser and imput your url to your MangosWeb installer (www.yoursite.com/(path_to_your_MangosWeb)/install/)
-6. Imput all the requested information like your Emulator, Realm, Character, and World database.
-7. Once at step 2, click on "full install sql injection".
-8. Once you hit step 3, you need to make a super Admin account. Once completed, your mainsite is installed!
-9. Now, go back and rename your old DISABLE_INSTALLER.php back to "DISABLE_INSTALLER.php". This prevents people from hacking into your website.
-10. Now its time to configure the Mainsite, open "config/config.xml" MAKE SURE you spend a good amount of time editing the site!
-11. To configure the player map, open "config/playermap_config.php"
-
-
--- 1.2 Upgrading From v1 --
+## 1.2 Upgrading From v1
 
 If you are upgrading from version 1 to version 2 of MangosWeb Enhanced, You need to open "/install/sql/updates/old_v1_updates/" and bring your MangosWeb database up to revision 56. Once that is done, run the "/install/sql/updates/upgrade_from_v1.sql" on your realmd database.
 
-
-ReadMe
-
-
-
--- 2.1 Setting Up The News via News Module --
+## 2.1 Setting Up The News via News Module
 
 The news forum IS SETUP ALREADY set up. To edit any anything, go: "admin panel -> add/edit news"
 
 If you leave Default Component to frontpage, topics you post here will appear on the main page. Very Blizzlike.
 
 
--- 2.2 Setting Up The Vote System --
+## 2.2 Setting Up The Vote System 
 
 1.1 Your server remote access should be turned on (look in your server config file for Ra.Enable).
 
@@ -74,13 +71,15 @@ If you leave Default Component to frontpage, topics you post here will appear on
 
 3. To adjust the rewards or site links etc. "go -> admin panel -> Vote system Admin"
 
-NOTE! The vote system is disabled through the config. look for <vote><enable>1</enable></vote>.
+### NOTE! 
+
+The vote system is disabled through the config. look for <vote><enable>1</enable></vote>.
 To remove the "click here to vote for us" logo on the frontpage, open "config/config.xml" Find <votebanner><enable>
 
 If you are still having issues with the vote system after reading this, please read "Remote Access" under support, on this page.
 
 
--- 2.3 Setting Up The Donation System --
+## 2.3 Setting Up The Donation System 
 
 The donation system now uses Remote Access (New feature for MWE v2) to send items and.. Thats right, Gold because of the changes to the mail and mail_items tables, as well as thhe removal of the characters data fields. To learn how to set up your remote access, read section 2.2 (Setting up the vote system), or Section 3.1 (Remote Access).
 
@@ -111,7 +110,7 @@ $fp = fsockopen ('ssl://www.paypal.com', 443, $errno, $errstr, 30);
 6. You should see the information posted in the database, and you should be able to log in with the account that owns the character ID you used, and click "send items to ingame mailbox" on the donate page. log in and check your mailbox :)
 
 
--- 2.4 Character Copy System --
+## 2.4 Character Copy System
 
 The character copy system is a unique feature that allows admins to set up special accounts, and create max level characters, which users can copy as a reward (much like the "public test realm feature"). As of right now, the only way to charge users for this system is by spending vote points, but who says you cant charge money for that??
 
@@ -129,7 +128,7 @@ To set this feature up:
 to copy a character to your personal account, click the "copy character" button. The character will be copied to your account, along with whats in his/her bags, and the armor that character is wearing. The realm is decided by which realm you currently have selected.
 
 
--- 2.5 Advanced Template System --
+## 2.5 Advanced Template System
 
 The advanced template system is one of the new features included in MangosWeb Enhanced v2. This new system allows you to make custom templates much easier then before. Please note that in order to attempt to make your own templates for this CMS, you need to know alittle php, mysql, html, and css.
 
@@ -161,7 +160,7 @@ Things to keep in mind when writing your code.
 4. to call your template file's template <?php echo $offtmp; ?>
 
 
--- 2.6 Using PBWoW Forum (extra) --
+## 2.6 Using PBWoW Forum (extra) 
 
 In this release of MangosWeb, I have included a pre-installed/setup PBWoW Forum, using PBWoW RC4, and phpbb v3.0.7pl1. What is PBWoW you ask? PBWoW is a phpbb mod, that makes your forum look like a blizzlike forums. In order to use these forums, theres only 3 steps.
 
@@ -194,7 +193,7 @@ Support
 
 
 
--- 3.1 Remote Access --
+## 3.1 Remote Access
 
 The new donation system as well as the vote system use whats called "remote access" to send items and mail to characters in game. Basically the website script tells your server console what to do, using server commands.
 
@@ -219,7 +218,7 @@ Open your config.xml and go -> vote_system -> sleep_timer -> and change the 1 to
 
 2. When all else fails, check you ra_commands.log from your server directory. It will always say what the error was. If you are still having issues, then post them here: http://code.google.com/p/mwenhanced/issues/list
 
--- 3.2 Login Problems --
+## 3.2 Login Problems
 
 '''Solution 1: regenerate your dynamic site configuration''' Blank out the following in config/config.xml:
 
@@ -253,11 +252,9 @@ This mostly happens when you change this site cookie, but not always. If this do
 Sometimes the website (according to reports on the mangosproject.org forum) doesn't alwasy delete the account key issued at login which is contained in the account_keys table in realmd database. The website basically thinks you are logged in already and will not let you login again. To solve this problem, you can try deleting the keys for people that are having trouble logging in
 Note: this seems to be a bigger issue with Firefox than with Internet Explorer.
 
--- 3.3 FAQ --
+## 3.3 FAQ 
 
-
-
-1. Question: How do i add Menu links?
+### 1. Question: How do i add Menu links?
 
 Answer:
 
@@ -315,7 +312,7 @@ The 1 index in the array is the destination you want the link to take you to
 Close and save all of your changes and you are ready to go! Congratulations!
 
 
-2. Question: How do edit/add quicklinks on the main page?
+### 2. Question: How do edit/add quicklinks on the main page?
 
 Answer:
 
@@ -358,8 +355,7 @@ li class="e">
 <a href="" /></a>
 </li>
 
-
-3. Question: How do i use the site with multiple realms?
+### 3. Question: How do i use the site with multiple realms?
 
 Answer:
 For those of you running multiple realms, it may get alittle confusing to configure the website to feature all realms. So i decided to write a tutorial on how to do it:
@@ -371,13 +367,13 @@ For those of you running multiple realms, it may get alittle confusing to config
 5.And boom, you should have it. Please note that all your realms must use the same "realmd" database in order for it to work!
 
 
-4. Question: How do i add my own page into the site?
+### 4. Question: How do i add my own page into the site?
 
 Answer:
 Check out the MangosWeb Enhanced Wiki pages, there is a bunch of tutorials and resources fo you to use there.
 
 
--- 3.4 Resources --
+## 3.4 Resources
 
 MangosWeb Enhanced Developer Site
 MangosWeb Enhanced Forums
