@@ -261,16 +261,14 @@ Note: this seems to be a bigger issue with Firefox than with Internet Explorer.
 
 ### 1. Question: How do i add Menu links?
 
-Answer:
-
-'''Step 1'''
+**Step 1**
 
 You need to decide on a link name and the location that link will point to
 
 i.e. Link name = Myspace
 Location = www.myspace.com/yourmyspacepage
 
-'''Step 2'''
+**Step 2**
 
 Open /lang/en.English.lang with your favorite editor
 (this step needs to be repeated for each language you are supporting)
@@ -280,25 +278,23 @@ Type this line into the file |=|MS :=: Myspace
 
 The MS is the pointer you will need to match up later and the Myspace is what will actually show in the menu
 
-'''Step 3'''
+**Step 3**
 
 Open /core/default_components.php with your favorite editor
-
 On this page you will see all the menus and how they are formatted
-
 Decide which menu you want your link to fall under and goto that section
-
 For our purposes we will use the account menu
+Under 2-menuAccount you will see 5 arrays, we are adding the sixth here.
+At the bottom of the fifth array you will see:
 
-Under 2-menuAccount you will see 5 arrays, we are adding the sixth here
-
-at the bottom of the fifth array you will see:
+```
 ),
 ),
 '3-menuGameGuide' =>
 We are adding our link between the first and second ),
-
+```
 It will now look like this
+```
 ),
 6 =>
 array (
@@ -308,27 +304,25 @@ array (
 ),
 ),
 '3-menuGameGuide' =>
+```
 
 The 0 index in the array is the pointer from the language page you added earlier. It will goto the MS pointer and retrieve Myspace
 The 1 index in the array is the destination you want the link to take you to
 
-'''Step 4'''
+**Step 4**
 
 Close and save all of your changes and you are ready to go! Congratulations!
 
-
 ### 2. Question: How do edit/add quicklinks on the main page?
 
-Answer:
-
-'''Step 1'''
+**Step 1**
 
 You need to decide on a link name and the location that link will point to
 
 i.e. Link name = Myspace
 Location = www.myspace.com/yourmyspacepage
 
-'''Step 2'''
+**Step 2**
 
 Open /lang/en.English.lang with your favorite editor
 (this step needs to be repeated for each language you are supporting)
@@ -338,7 +332,7 @@ Type this line into the file |=|MS :=: Myspace
 
 The MS is the pointer you will need to match up later and the Myspace is what will actually show in the menu
 
-'''Step 3'''
+**Step 3**
 
 open /templates/offlike/body_right.php with your favorite editor
 
@@ -365,21 +359,20 @@ li class="e">
 
 ### 3. Question: How do i use the site with multiple realms?
 
-Answer:
 For those of you running multiple realms, it may get alittle confusing to configure the website to feature all realms. So i decided to write a tutorial on how to do it:
 
-1.Open your config.xml, and scroll down to <multirealm>...Change the 0 to a 1.
-2.Next, go to the website. Go into the admin panel, and select "Realms" under Site Managment.
-3.In the empty fields below, enter you realm information. When you get to the Dbinfo column, enter in this format: "mysql username;mysql password;mysql port;mysql IP address;world database name;character database name". DONT FORGET the semi colon between each field.
-4.Click create new realm... A window will pop up asking if your sure, click yes.
-5.And boom, you should have it. Please note that all your realms must use the same "realmd" database in order for it to work!
-
+1. Open your config.xml, and scroll down to <multirealm>...Change the 0 to a 1.
+2. Next, go to the website. Go into the admin panel, and select "Realms" under Site Managment.
+3. In the empty fields below, enter you realm information. 
+   When you get to the Dbinfo column, enter in this format: 
+	`mysql username;mysql password;mysql port;mysql IP address;world database name;character database name`
+   DONT FORGET the semi colon between each field.
+4. Click create new realm... A window will pop up asking if your sure, click yes.
+5. And boom, you should have it. Please note that all your realms must use the same "realmd" database in order for it to work!
 
 ### 4. Question: How do i add my own page into the site?
 
-Answer:
 Check out the MangosWeb Enhanced Wiki pages, there is a bunch of tutorials and resources fo you to use there.
-
 
 ## 3.4 Resources
 
